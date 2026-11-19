@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+/* Mode gelap berbasis class .dark pada <html> */
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --accent: #4f46e5;
+  --accent-soft: #eef2ff;
+}
+[data-accent='emerald'] {
+  --accent: #059669;
+  --accent-soft: #ecfdf5;
+}
+[data-accent='rose'] {
+  --accent: #e11d48;
+  --accent-soft: #fff1f2;
+}
+
+body {
+  @apply bg-slate-50 text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100;
+}
+
+/* Toast UI Editor tidak boleh meluap dari modal */
+.toastui-editor-defaultUI {
+  border-radius: 0.5rem;
+}

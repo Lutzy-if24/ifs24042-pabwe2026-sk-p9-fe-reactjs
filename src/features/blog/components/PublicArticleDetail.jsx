@@ -35,12 +35,13 @@ export default function PublicArticleDetail({ slug, navigate, dark }) {
     return (
       <section className="w-full px-4 py-10 md:px-10">
         {back}
+        <h1 className="mb-3 text-2xl font-extrabold">Artikel tidak dapat dimuat</h1>
         <p role="alert" className="text-red-600">{state.error}</p>
       </section>
     )
   }
   if (!state.post) {
-    return <p className="px-4 py-10 text-center text-slate-600">Memuat artikel…</p>
+    return <h1 className="px-4 py-10 text-center text-base font-normal text-slate-600">Memuat artikel…</h1>
   }
 
   const { post } = state

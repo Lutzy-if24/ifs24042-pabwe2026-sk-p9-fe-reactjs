@@ -40,7 +40,7 @@ export default function PublicArticleDetail({ slug, navigate, dark }) {
     )
   }
   if (!state.post) {
-    return <p className="px-4 py-10 text-center text-slate-500">Memuat artikel…</p>
+    return <p className="px-4 py-10 text-center text-slate-600">Memuat artikel…</p>
   }
 
   const { post } = state
@@ -51,7 +51,7 @@ export default function PublicArticleDetail({ slug, navigate, dark }) {
         {post.category}
       </span>
       <h1 className="mt-3 text-3xl font-extrabold leading-tight md:text-4xl">{post.title}</h1>
-      <p className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-slate-500 dark:text-slate-400">
+      <p className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-slate-600 dark:text-slate-400">
         <span>Oleh {post.author.username}</span>
         <span>{formatDate(post.published_at)}</span>
         <span className="inline-flex items-center gap-1">

@@ -19,7 +19,7 @@ export default function PostStats({ stats, active, onSelect }) {
               : 'border-slate-200 bg-white hover:border-[var(--accent)] dark:border-slate-800 dark:bg-slate-900'
           }`}
         >
-          <p className="text-sm text-slate-500 dark:text-slate-400">{c.label}</p>
+          <p className="text-sm text-slate-600 dark:text-slate-400">{c.label}</p>
           <p className="mt-1 text-3xl font-bold">{c.value}</p>
         </button>
       ))}

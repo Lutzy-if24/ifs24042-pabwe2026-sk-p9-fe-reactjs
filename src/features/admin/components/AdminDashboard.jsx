@@ -44,7 +44,7 @@ export default function AdminDashboard() {
 
   const empty = (cols, text) => (
     <tr>
-      <td colSpan={cols} className="px-4 py-10 text-center text-slate-500">{text}</td>
+      <td colSpan={cols} className="px-4 py-10 text-center text-slate-600">{text}</td>
     </tr>
   )
 
@@ -55,7 +55,7 @@ export default function AdminDashboard() {
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
         {cards.map((c) => (
           <div key={c.label} className="rounded-xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900">
-            <p className="text-sm text-slate-500 dark:text-slate-400">{c.label}</p>
+            <p className="text-sm text-slate-600 dark:text-slate-400">{c.label}</p>
             <p className="mt-1 text-3xl font-bold">{c.value}</p>
           </div>
         ))}
@@ -65,7 +65,7 @@ export default function AdminDashboard() {
         <h2 className="mb-3 text-lg font-bold">Direktori Pengguna</h2>
         <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900">
           <table className="w-full text-left text-sm">
-            <thead className="bg-slate-50 text-xs uppercase text-slate-500 dark:bg-slate-800 dark:text-slate-400">
+            <thead className="bg-slate-50 text-xs uppercase text-slate-600 dark:bg-slate-800 dark:text-slate-400">
               <tr>
                 <th className="px-4 py-3">ID</th>
                 <th className="px-4 py-3">Username</th>
@@ -123,7 +123,7 @@ export default function AdminDashboard() {
         </div>
         <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900">
           <table className="w-full text-left text-sm">
-            <thead className="bg-slate-50 text-xs uppercase text-slate-500 dark:bg-slate-800 dark:text-slate-400">
+            <thead className="bg-slate-50 text-xs uppercase text-slate-600 dark:bg-slate-800 dark:text-slate-400">
               <tr>
                 <th className="px-4 py-3">Judul</th>
                 <th className="px-4 py-3">Penulis</th>

@@ -39,9 +39,9 @@ export default function PublicArticleList({ navigate }) {
   if (error) {
     body = <p role="alert" className="py-12 text-center text-red-600">{error}</p>
   } else if (posts === null) {
-    body = <p className="py-12 text-center text-slate-500">Memuat artikel…</p>
+    body = <p className="py-12 text-center text-slate-600">Memuat artikel…</p>
   } else if (posts.length === 0) {
-    body = <p className="py-12 text-center text-slate-500">Belum ada artikel yang cocok.</p>
+    body = <p className="py-12 text-center text-slate-600">Belum ada artikel yang cocok.</p>
   } else {
     body = (
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -61,7 +61,7 @@ export default function PublicArticleList({ navigate }) {
                 </Link>
               </h2>
               <p className="mt-2 flex-1 text-sm text-slate-600 dark:text-slate-400">{p.excerpt}</p>
-              <div className="mt-4 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
+              <div className="mt-4 flex items-center justify-between text-xs text-slate-600 dark:text-slate-400">
                 <span>
                   {p.author.username} · {formatDate(p.published_at)}
                 </span>
@@ -80,7 +80,7 @@ export default function PublicArticleList({ navigate }) {
     <section className="mx-auto w-full max-w-[96rem] px-4 py-8">
       <div className="mb-8 text-center">
         <h1 className="text-3xl font-extrabold">Artikel Terbaru</h1>
-        <p className="mt-1 text-slate-500 dark:text-slate-400">Bacaan pilihan dari para penulis Delcom Blog.</p>
+        <p className="mt-1 text-slate-600 dark:text-slate-400">Bacaan pilihan dari para penulis Delcom Blog.</p>
       </div>
 
       <div className="mx-auto mb-5 flex max-w-xl items-center gap-2 rounded-full border border-slate-300 bg-white px-4 py-2 dark:border-slate-700 dark:bg-slate-900">

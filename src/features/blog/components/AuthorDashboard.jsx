@@ -69,9 +69,9 @@ export default function AuthorDashboard({ navigate, dark }) {
 
   let rows
   if (!loaded) {
-    rows = <tr><td colSpan={6} className="px-4 py-10 text-center text-slate-500">Memuat artikel…</td></tr>
+    rows = <tr><td colSpan={6} className="px-4 py-10 text-center text-slate-600">Memuat artikel…</td></tr>
   } else if (visible.length === 0) {
-    rows = <tr><td colSpan={6} className="px-4 py-10 text-center text-slate-500">Belum ada artikel.</td></tr>
+    rows = <tr><td colSpan={6} className="px-4 py-10 text-center text-slate-600">Belum ada artikel.</td></tr>
   } else {
     rows = visible.map((p) => (
       <tr key={p.id} className="border-t border-slate-100 dark:border-slate-800">
@@ -88,7 +88,7 @@ export default function AuthorDashboard({ navigate, dark }) {
           >
             <span className={`absolute top-0.5 h-5 w-5 rounded-full bg-white transition-all ${p.is_published ? 'left-5' : 'left-0.5'}`} />
           </button>
-          <span className="ml-2 text-xs text-slate-500">{p.is_published ? 'Terbit' : 'Draf'}</span>
+          <span className="ml-2 text-xs text-slate-600">{p.is_published ? 'Terbit' : 'Draf'}</span>
         </td>
         <td className="px-4 py-3">{formatDate(p.created_at)}</td>
         <td className="px-4 py-3">{p.reading_time} mnt</td>
@@ -125,7 +125,7 @@ export default function AuthorDashboard({ navigate, dark }) {
 
       <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900">
         <table className="w-full text-left text-sm">
-          <thead className="bg-slate-50 text-xs uppercase text-slate-500 dark:bg-slate-800 dark:text-slate-400">
+          <thead className="bg-slate-50 text-xs uppercase text-slate-600 dark:bg-slate-800 dark:text-slate-400">
             <tr>
               <th className="px-4 py-3">Judul</th>
               <th className="px-4 py-3">Kategori</th>

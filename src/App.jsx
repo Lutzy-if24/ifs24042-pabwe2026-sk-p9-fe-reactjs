@@ -1,16 +1,18 @@
-import { useCallback, useEffect, useState } from 'react'
+import { lazy, Suspense, useCallback, useEffect, useState } from 'react'
 import Link from './components/Link.jsx'
-import AdminDashboard from './features/admin/components/AdminDashboard.jsx'
 import { logout } from './features/auth/api/authApi.js'
 import AuthPage from './features/auth/components/AuthPage.jsx'
 import AuthModal from './features/auth/modals/AuthModal.jsx'
-import AuthorDashboard from './features/blog/components/AuthorDashboard.jsx'
-import PublicArticleDetail from './features/blog/components/PublicArticleDetail.jsx'
 import PublicArticleList from './features/blog/components/PublicArticleList.jsx'
 import StickyNavbar from './features/blog/components/StickyNavbar.jsx'
 import { clearSession, getUser, saveSession } from './helpers/apiHelper.js'
 import useTheme from './hooks/useTheme.js'
 import { homeFor, matchRoute, resolveRedirect } from './routes.js'
+
+// Halaman berat dimuat belakangan (code splitting) agar beranda cepat tampil.
+const AdminDashboard = lazy(() => import('./features/admin/components/AdminDashboard.jsx'))
+const AuthorDashboard = lazy(() => import('./features/blog/components/AuthorDashboard.jsx'))
+const PublicArticleDetail = lazy(() => import('./features/blog/components/PublicArticleDetail.jsx'))
 
 /**
  * Orkestrator SPA: routing berbasis path peramban (pushState + popstate),
@@ -109,7 +111,11 @@ export default function App() {
         onLogout={handleLogout}
         onOpenAuth={setAuthModal}
       />
-      <main>{page}</main>
+      <main>
+        <Suspense fallback={<h1 className="px-4 py-10 text-center text-base font-normal text-slate-600">Memuat halaman…</h1>}>
+          {page}
+        </Suspense>
+      </main>
       {authModal && (
         <AuthModal mode={authModal} onClose={() => setAuthModal(null)} onAuthenticated={handleAuthenticated} />
       )}

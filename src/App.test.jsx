@@ -37,9 +37,9 @@ describe('App routing', () => {
   it('/posts/:slug menerima slug dan status tema', async () => {
     at('/posts/halo-dunia')
     render(<App />)
-    expect(screen.getByText('stub-detail:halo-dunia:false')).toBeInTheDocument()
+    expect(await screen.findByText('stub-detail:halo-dunia:false')).toBeInTheDocument()
     await userEvent.click(screen.getByRole('button', { name: 'Ganti tema' }))
-    expect(screen.getByText('stub-detail:halo-dunia:true')).toBeInTheDocument()
+    expect(await screen.findByText('stub-detail:halo-dunia:true')).toBeInTheDocument()
     expect(document.documentElement).toHaveClass('dark')
   })
 
@@ -59,26 +59,27 @@ describe('App routing', () => {
     expect(screen.getByRole('heading', { name: 'Masuk ke Delcom Blog' })).toBeInTheDocument()
   })
 
-  it('/admin oleh member dialihkan ke /author; oleh admin ditampilkan', () => {
+  it('/admin oleh member dialihkan ke /author; oleh admin ditampilkan', async () => {
     saveSession('t', member)
     at('/admin')
     const { unmount } = render(<App />)
     expect(window.location.pathname).toBe('/author')
-    expect(screen.getByText('stub-author')).toBeInTheDocument()
+    expect(await screen.findByText('stub-author')).toBeInTheDocument()
     unmount()
 
     saveSession('t', admin)
     at('/admin')
     render(<App />)
-    expect(screen.getByText('stub-admin')).toBeInTheDocument()
+    expect(await screen.findByText('stub-admin')).toBeInTheDocument()
     expect(screen.getByRole('link', { name: 'Admin' })).toBeInTheDocument()
   })
 
-  it('pengguna yang sudah login membuka /register dialihkan ke beranda kerjanya', () => {
+  it('pengguna yang sudah login membuka /register dialihkan ke beranda kerjanya', async () => {
     saveSession('t', admin)
     at('/register')
     render(<App />)
     expect(window.location.pathname).toBe('/admin')
+    expect(await screen.findByText('stub-admin')).toBeInTheDocument()
   })
 
   it('tombol back/forward peramban (popstate) mengganti halaman', async () => {
@@ -96,7 +97,7 @@ describe('App routing', () => {
     saveSession('t', member)
     at('/author')
     render(<App />)
-    expect(screen.getByText('stub-author')).toBeInTheDocument()
+    expect(await screen.findByText('stub-author')).toBeInTheDocument()
     act(() => {
       window.dispatchEvent(new Event('auth:expired'))
     })
@@ -142,6 +143,7 @@ describe('App autentikasi', () => {
     saveSession('tok', member)
     at('/author')
     render(<App />)
+    expect(await screen.findByText('stub-author')).toBeInTheDocument()
     await userEvent.click(screen.getByRole('button', { name: 'Keluar' }))
     await waitFor(() => expect(screen.getByText('stub-public')).toBeInTheDocument())
     expect(logout).toHaveBeenCalled()
